@@ -22,20 +22,9 @@ public class Words {
     public Integer binaryChopSearch(String lookFor){
         int rangeStart = 0;
         int rangeEnd = words.size() -1;
-        
-        while ( rangeEnd >= rangeStart ) {
-            int testIndex = rangeStart + ((rangeEnd - rangeStart) / 2);
 
-            String testItem = words.get(testIndex);
-            int comparison = testItem.compareTo(lookFor);
-            if ( comparison == 0 ){
-                return testIndex;
-            } else if ( comparison < 0 ){
-                rangeStart = testIndex + 1;
-            } else {
-                rangeEnd = testIndex -1 ;
-            }
-        }
+        // search code here
+
         return -1;
     }
 

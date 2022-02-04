@@ -44,21 +44,15 @@ public class SearchApp {
 
         this.words = new Words(stream);
 
-        long simpleTime = measure(words::simpleSearch, searchFor);
+        long simpleTime = measure(words::simpleSearch);
         System.out.printf("Simple search %,d%n", simpleTime);
 
-        long binaryChopTime = measure(words::binaryChopSearch, searchFor);
+        long binaryChopTime = measure(words::binaryChopSearch);
         System.out.printf("Binary chop search %,d%n", binaryChopTime);
     }
 
-    private long measure(java.util.function.Function<String, Integer> finder, String searchFor){
-        long start = System.nanoTime();
-        int index = -1;
-        for( int i = 0; i < iterations; i++) {
-            index = finder.apply(searchFor);
-        }
-        long end = System.nanoTime();
-        System.out.printf("Found %s at %,d%n", searchFor, index);
-        return end - start;
-    }
+    // add the measure function here, printing the elapsed time for
+    // a loop as specified by the member variable iterations
+    // pass the member variable searchfor to the specified search function
+
 }
