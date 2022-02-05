@@ -1,6 +1,5 @@
 package softwire.sudoku;
 
-import com.softwire.sudoku.SudokuSolution;
 import jdk.jshell.spi.ExecutionControl;
 
 import java.util.ArrayDeque;
@@ -10,7 +9,7 @@ import java.util.Deque;
 public class Sudoku {
 
     public static void main(String[] args) throws ExecutionControl.NotImplementedException {
-        int[][] zinitialBoard = {
+        int[][] initialBoard = {
                 {0, 0, 0, 0, 0, 2, 1, 0, 0},
                 {0, 0, 4, 0, 0, 8, 7, 0, 0},
                 {0, 2, 0, 3, 0, 0, 9, 0, 0},
@@ -21,7 +20,7 @@ public class Sudoku {
                 {0, 0, 8, 2, 0, 0, 5, 0, 0},
                 {0, 0, 9, 7, 0, 0, 0, 0, 0}
         };
-        int[][] initialBoard = {
+        int[][] badInitialBoard = {
                 {0, 8, 5, 9, 6, 2, 1, 3, 4},
                 {0, 0, 4, 0, 0, 8, 7, 0, 0},
                 {0, 2, 0, 3, 0, 0, 9, 0, 0},
