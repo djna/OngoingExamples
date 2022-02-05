@@ -9,7 +9,7 @@ import java.util.Deque;
 public class Sudoku {
 
     public static void main(String[] args) throws ExecutionControl.NotImplementedException {
-        int[][] initialBoard = {
+        int[][] goodInitialBoard = {
                 {0, 0, 0, 0, 0, 2, 1, 0, 0},
                 {0, 0, 4, 0, 0, 8, 7, 0, 0},
                 {0, 2, 0, 3, 0, 0, 9, 0, 0},
@@ -32,31 +32,46 @@ public class Sudoku {
                 {0, 0, 9, 7, 0, 0, 0, 0, 0}
         };
 
+        int[][] emptyInitialBoard = {
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0}
+        };
+
         // Initialising
+        int[][] initialBoard = goodInitialBoard;
         System.out.println("Solving board:");
         printBoard(initialBoard);
 
         // Set up the stack
         Deque<int[][]> stack = new ArrayDeque<>();
-        stack.push(initialBoard);
+        stack.add(initialBoard);
 
+        int visitCount = 0;
         while (!stack.isEmpty()) {
-            int[][] board = stack.pop();
+            int[][] board = stack.remove();
             Slot slot = getEmptySlot(board);
 
             if (slot == null) {
-                System.out.println("Solved!");
+                System.out.printf("Solved! We visited %d nodes%n", visitCount);
                 printBoard(board);
                 return;
             }
 
             for (int guess = 1; guess <= 9; guess++) {
                 if (isValidInSlot(guess, slot, board)) {
-                    stack.push(updateBoard(guess, slot, board));
+                    stack.add(updateBoard(guess, slot, board));
+                    visitCount++;
                 }
             }
         }
-        System.out.println("No Solution!");
+        System.out.printf("No Solution! We visited %d nodes%n", visitCount);
     }
 
 
