@@ -1,19 +1,32 @@
 package softwire.sudoku;
 
+import com.softwire.sudoku.SudokuSolution;
 import jdk.jshell.spi.ExecutionControl;
 
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Deque;
 
 public class Sudoku {
 
     public static void main(String[] args) throws ExecutionControl.NotImplementedException {
-        int[][] initialBoard = {
+        int[][] zinitialBoard = {
                 {0, 0, 0, 0, 0, 2, 1, 0, 0},
                 {0, 0, 4, 0, 0, 8, 7, 0, 0},
                 {0, 2, 0, 3, 0, 0, 9, 0, 0},
                 {6, 0, 2, 0, 0, 3, 0, 4, 0},
                 {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 5, 0, 6, 0, 0, 3, 0, 1},
+                {0, 0, 3, 0, 0, 5, 0, 8, 0},
+                {0, 0, 8, 2, 0, 0, 5, 0, 0},
+                {0, 0, 9, 7, 0, 0, 0, 0, 0}
+        };
+        int[][] initialBoard = {
+                {0, 8, 5, 9, 6, 2, 1, 3, 4},
+                {0, 0, 4, 0, 0, 8, 7, 0, 0},
+                {0, 2, 0, 3, 0, 0, 9, 0, 0},
+                {6, 0, 2, 0, 0, 3, 0, 4, 0},
+                {7, 0, 0, 0, 0, 0, 0, 0, 0},
                 {0, 5, 0, 6, 0, 0, 3, 0, 1},
                 {0, 0, 3, 0, 0, 5, 0, 8, 0},
                 {0, 0, 8, 2, 0, 0, 5, 0, 0},
@@ -44,7 +57,10 @@ public class Sudoku {
                 }
             }
         }
+        System.out.println("No Solution!");
     }
+
+
 
     private static Slot getEmptySlot(int[][] board) throws ExecutionControl.NotImplementedException {
 
@@ -65,19 +81,46 @@ public class Sudoku {
     }
 
     private static boolean isValidInRow(int row, int guess, int[][] board) throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException(" isValidInRow Fill Me In!");
+        for (int col = 0; col < board[row].length; col++){
+            if ( board[row][col] == guess){
+                return false;
+            }
+        }
+        return true;
     }
 
     private static boolean isValidInCol(int col, int guess, int[][] board) throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("isValidInCol Fill Me In!");
+        for (int row = 0; row < board.length; row++){
+           if ( board[row][col] == guess){
+                return false;
+            }
+        }
+        return true;
     }
 
     private static boolean isValidInSquare(Slot slot, int guess, int[][] board) throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("isValidInSquare Fill Me In!");
+        int squareX = slot.row / 3;
+        int squareY = slot.col / 3;
+
+        for (int row = squareX * 3; row < (squareX + 1) * 3; row++) {
+            for (int col = squareY * 3; col < (squareY + 1) * 3; col++) {
+                if (board[row][col] == guess) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
-    private static int[][] updateBoard(int guess, Slot slot, int[][] board) throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("updateBoard Fill Me In!");
+
+
+    private static int[][] updateBoard(int guess, Slot slot, int[][] board) {
+        int[][] clonedBoard = Arrays.stream(board).map(int[]::clone).toArray(int[][]::new);
+        if ( clonedBoard[slot.row][slot.col] != 0){
+            throw new RuntimeException("already occupied " + slot);
+        }
+        clonedBoard[slot.row][slot.col] =  guess;
+        return clonedBoard;
     }
 
     private static void printBoard(int[][] board)
