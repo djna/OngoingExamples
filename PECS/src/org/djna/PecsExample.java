@@ -18,9 +18,7 @@ public class PecsExample {
 
     public static void main(String[] args) {
         List<Animal> zoo = new ArrayList<>();
-
         List<Wolf> wolves = new ArrayList<>();
-        // code to add wokves here
 
         List<Horse> horses = new ArrayList<>();
         // code to add horses here
