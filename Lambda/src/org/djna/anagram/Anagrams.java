@@ -23,7 +23,7 @@ public class Anagrams {
                     .map( w -> w.replaceAll("[^a-zA-Z ]", "")
                                 .toLowerCase())
                     .sorted().distinct()
-                    .collect(groupingBy(word -> alphabetize(word)))
+                    .collect(groupingBy(Anagrams::alphabetize ))
                     .values().stream()
                     .filter(group -> group.size() >= minGroupSize)
                     .forEach(g -> System.out.println(g.size() + ": " + g));
