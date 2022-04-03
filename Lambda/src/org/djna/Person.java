@@ -75,14 +75,26 @@ public class Person implements Comparable<Person>, Printable {
         people.stream().sorted(comparator).forEach(Person::printSelf);
     }
 
+    @Override
+    public int compareTo(Person o) {
+        return Integer.compare(
+            this.favouriteNumber,
+            o.favouriteNumber
+            );
+    }
 
+/*
     @Override
     public int compareTo(Person o) {
         return dateOfBirth.compareTo(o.dateOfBirth);
-    }
+    } */
 
     public boolean isSuitable( CheckPerson checker){
         return checker.test(this);
+    }
+
+    public static int compareByDob( Person p1, Person p2){
+        return p1.dateOfBirth.compareTo(p2.dateOfBirth);
     }
 
     public static void main(String[] args) {
@@ -103,7 +115,7 @@ public class Person implements Comparable<Person>, Printable {
 
         System.out.printf("%nSorted People %s%n", people);
 
-        Comparator<Person> favoriteNumberComparator = new Comparator<Person>() {
+        Comparator<Person> favoriteNumberComparator = new Comparator<>() {
             @Override
             public int compare(Person o1, Person o2) {
                 return Integer.compare(o1.favouriteNumber, o2.favouriteNumber);
@@ -124,7 +136,9 @@ public class Person implements Comparable<Person>, Printable {
                 }
         );
 
-        System.out.printf("%nSorted People by reverse favourite number %n%s%n", people);
+        Collections.sort(people, Person::compareByDob);
+
+        System.out.printf("%n!!!Sorted People using dob %n%s%n", people);
 
         Collections.sort(people,
                 (o1,  o2) ->
