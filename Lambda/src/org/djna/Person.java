@@ -222,6 +222,12 @@ public class Person implements Comparable<Person>, Printable {
                 p ->  System.out.printf("%s", p)
         );
 
+        System.out.printf("%nMarch people%n");
+        long mayCount = people.stream().filter(
+                p -> p.dateOfBirth.getMonth() == Month.MAY
+        ).count();
+        System.out.printf("%n%d May people%n", mayCount);
+
         System.out.printf("%nAverage Favor%n");
         int total = people.stream().map(
                 p -> p.favouriteNumber
@@ -289,6 +295,13 @@ public class Person implements Comparable<Person>, Printable {
         );
 
         System.out.printf("%nMapping %s %n", nameDateMap);
+
+        String[] skills = {"Java", "SQL", "C#", "Perl", "Java", "Perl", "SQL"};
+        List<String> skillList = Arrays.asList(skills);
+
+        skillList.stream().distinct().forEach(
+                s -> System.out.printf("%s%n", s)
+        );
     }
 
 
