@@ -2,21 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4c4a6f4-8071-48ba-96b2-d1cd60d165f7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OngoingExamples.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lambda/src/org/djna/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lambda/src/org/djna/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lambda/src/org/softwire/training/counter/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lambda/src/org/softwire/training/counter/Countable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lambda/src/org/softwire/training/counter/Counter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lambda/src/org/softwire/training/counter/items/Apple.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lambda/src/org/softwire/training/counter/items/Box.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lambda/src/org/softwire/training/counter/items/Cart.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lambda/src/org/softwire/training/counter/items/Colour.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Streams/src/org/djna/streams/Infinity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Streams/src/org/djna/streams/Builder.java" beforeDir="false" afterPath="$PROJECT_DIR$/Streams/src/org/djna/streams/Builder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Streams/words.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Streams/words.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +38,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="16" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -53,6 +48,9 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Streams" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.djna.streams" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Builder">
@@ -103,6 +101,7 @@
       <option name="presentableId" value="Default" />
       <updated>1648967236908</updated>
       <workItem from="1648967240411" duration="8704000" />
+      <workItem from="1649135367800" duration="2347000" />
     </task>
     <servers />
   </component>
@@ -119,5 +118,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
