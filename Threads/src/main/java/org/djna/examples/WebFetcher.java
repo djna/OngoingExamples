@@ -9,9 +9,27 @@ import java.net.URL;
 public class WebFetcher {
 
     public static void main(String[] args) throws Exception {
-        String urlSpec = "http://example.com";
-        String page = getWebPage(urlSpec);
-        System.out.printf("Url=%s%n, page=%s%n", urlSpec, page);
+
+        Runnable fetcherRunnable = () ->{
+            System.out.printf("Fetching in %d%n", Thread.currentThread().getId());
+            String urlSpec = "http://example.com";
+
+            try {
+                String page = getWebPage(urlSpec);
+                System.out.printf("Url=%s%n, page=%s%n", urlSpec, page);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        };
+
+        Thread fetcherThread = new Thread(fetcherRunnable);
+        System.out.printf("Starting%n");
+        fetcherThread.start();
+        System.out.printf("Joining%n");
+        fetcherThread.join();
+        System.out.printf("Joined%n");
+
     }
 
     private static String getWebPage(String urlSpec) throws Exception {
