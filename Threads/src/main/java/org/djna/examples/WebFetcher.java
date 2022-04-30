@@ -8,21 +8,15 @@ import java.net.URL;
 
 public class WebFetcher {
 
-    private String urlSpec;
-    private URL url;
-    HttpURLConnection con;
-
-
     public static void main(String[] args) throws Exception {
-        WebFetcher fetcher = new WebFetcher("http://example.com");
-        fetcher.fetch();
+        String urlSpec = "http://example.com";
+        String page = getWebPage(urlSpec);
+        System.out.printf("Url=%s%n, page=%s%n", urlSpec, page);
     }
 
-    private WebFetcher(String urlSpec){
-        this.urlSpec = urlSpec;
-    }
-
-    private void fetch() throws Exception {
+    private static String getWebPage(String urlSpec) throws Exception {
+        URL url;
+        HttpURLConnection con;
         url = new URL(urlSpec);
         con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
@@ -38,8 +32,6 @@ public class WebFetcher {
         }
         in.close();
         con.disconnect();
-
-        System.out.printf("GET URL %s, status %d%n", urlSpec, status);
-        System.out.printf("Content: %s%n", content.toString());
+        return content.toString();
     }
 }
