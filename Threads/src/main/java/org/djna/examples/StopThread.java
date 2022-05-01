@@ -8,12 +8,21 @@ private static boolean stopRequested;
             throws InterruptedException {
         Thread backgroundThread = new Thread(() -> {
             int i = 0;
-            while (!stopRequested)
+            while (!stopRequested())
                 i++;
         });
         backgroundThread.start();
         TimeUnit.SECONDS.sleep(1);
+        requestStop();
+    }
+
+    private static synchronized void requestStop() {
         stopRequested = true;
     }
+    private static synchronized boolean stopRequested() {
+        return stopRequested;
+    }
+
+
 }
 
