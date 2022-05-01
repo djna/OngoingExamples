@@ -5,10 +5,10 @@ import static java.lang.Thread.sleep;
 class DodgyCounter {
     private volatile int count;
 
-    public void increment() {
+    public synchronized void increment() {
         int original = count;
         try {
-            sleep(1);
+           sleep(1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
