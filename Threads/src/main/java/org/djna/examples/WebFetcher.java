@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class WebFetcher {
 
@@ -23,12 +25,10 @@ public class WebFetcher {
 
         };
 
-        Thread fetcherThread = new Thread(fetcherRunnable);
-        System.out.printf("Starting%n");
-        fetcherThread.start();
-        System.out.printf("Joining%n");
-        fetcherThread.join();
-        System.out.printf("Joined%n");
+        ExecutorService pool = Executors.newFixedThreadPool(5);
+        for ( int i = 0; i < 3 ; i++) {
+            pool.execute(fetcherRunnable);
+        }
 
     }
 
