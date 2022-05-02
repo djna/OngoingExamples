@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Threads" target="8" />
+      <module name="Threads" target="9" />
     </bytecodeTargetLevel>
   </component>
 </project>
