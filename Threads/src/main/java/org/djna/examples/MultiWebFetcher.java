@@ -20,26 +20,31 @@ public class MultiWebFetcher {
         );
 
 
-        boolean interrupted = false;
-        while (! interrupted && allFutures.getNow("working") != null ) {
+        boolean finished = false;
+        while (! finished  ) {
             try {
+                allFutures.get(1,TimeUnit.SECONDS);
+                finished = true;
+                System.out.printf("complete %n ");
+            } catch ( TimeoutException te) {
                 System.out.printf(". ");
-                Thread.sleep(100);
-            } catch ( Exception te) {
-                interrupted = true;
             }
         }
 
         allFutures.whenComplete((result, error) -> {
             if (error == null) {
                 System.out.printf("%nAll pages retrieved %n");
-                for (CompletableFuture f: futureList){
+                int count = 0, total = 0;
+                for (CompletableFuture<Integer> f: futureList){
                     try {
-                        System.out.printf("page %d %n", f.get() );
+                        count++;
+                        total += f.get();
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
+                System.out.printf("%d pages, total size %d  %n", count, total );
             } else {
                 System.out.printf("%n Error %s%n", error.toString());
             }
@@ -66,7 +71,7 @@ public class MultiWebFetcher {
     }
 
     private int fetchPage() {
-        System.out.printf("Fetching in %s%n", Thread.currentThread().getName());
+        //System.out.printf("Fetching in %s%n", Thread.currentThread().getName());
         String urlSpec = "http://example.com";
         int length = -1;
 
