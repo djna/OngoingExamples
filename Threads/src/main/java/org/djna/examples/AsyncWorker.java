@@ -5,7 +5,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class AsyncWorker {
-    
+
     public static void main(String[] args) throws Exception {
 
         CompletableFuture.supplyAsync(

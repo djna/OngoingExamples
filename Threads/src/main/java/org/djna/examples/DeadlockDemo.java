@@ -1,7 +1,7 @@
 package org.djna.examples;
 
 public class DeadlockDemo {
-    private volatile int count = 0;
+    private  int count = 0;
     private String name;
 
     public DeadlockDemo(String name){
@@ -12,7 +12,7 @@ public class DeadlockDemo {
         return name;
     }
 
-    public synchronized int getCount() {
+    public int getCount() {
         System.out.printf("get in %s in thread %s%n",
                 name, Thread.currentThread().getName());
         return count;

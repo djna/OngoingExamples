@@ -1,18 +1,18 @@
 package org.djna.examples;
 
 public class DodgyRunnable implements Runnable {
-    private static DodgyCounter dodgy = new DodgyCounter();
-    private int result;
+    private static DodgyCounter dodgy;
+
 
     @Override
     public void run() {
         dodgy.increment();
-        result = dodgy.get();
     }
 
     public static void main(String[] args) throws InterruptedException {
         int goodCount = 0;
-        for (int i = 0; i < 100_000L; i++) {
+        for (int i = 0; i < 10_000L; i++) {
+            dodgy = new DodgyCounter();
             DodgyRunnable workerA = new DodgyRunnable();
             DodgyRunnable workerB = new DodgyRunnable();
             Thread threadA = new Thread(workerA);
@@ -24,7 +24,9 @@ public class DodgyRunnable implements Runnable {
             threadA.join();
             threadB.join();
 
-            if (workerA.result != workerB.result) {
+            if (dodgy.get() != 2) {
+                //System.out.printf("%d failed%n", i);
+            } else {
                 goodCount++;
             }
         }

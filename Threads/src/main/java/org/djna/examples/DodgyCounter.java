@@ -3,7 +3,7 @@ package org.djna.examples;
 import static java.lang.Thread.sleep;
 
 class DodgyCounter {
-    private volatile int count;
+    private int count = 0;
 
     public synchronized void increment() {
         int original = count;
