@@ -1,18 +1,15 @@
 package org.djna.examples;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 import static java.lang.Thread.sleep;
 
 class DodgyCounter {
-    private volatile int count;
+    private AtomicInteger count = new AtomicInteger(0);
 
-    public void increment() {
+    public synchronized void  increment() {
         int original = count;
-        try {
-            sleep(1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        count = original + 1;
+
     }
 
     public int get() {
