@@ -8,12 +8,11 @@ class DodgyCounter {
     private AtomicInteger count = new AtomicInteger(0);
 
     public synchronized void  increment() {
-        int original = count;
-
+        count.incrementAndGet();
     }
 
     public int get() {
-        return count;
+        return count.get();
     }
 
 }
